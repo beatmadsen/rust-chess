@@ -6,8 +6,7 @@ mod tests {
     #[test]
     fn it_works() {
 
-        assert_eq!(3, dance(1, 2));
-        
+        assert_eq!(3, dance(1, 2));        
     }
 }
 
