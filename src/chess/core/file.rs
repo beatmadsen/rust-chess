@@ -1,12 +1,12 @@
-pub use super::Direction;
+use super::Direction;
 use self::FileVal::*;
 
-#[derive(PartialEq)]
-#[derive(Debug)]
+#[derive(PartialEq, Debug)]
 pub enum FileVal {
     A, B, C, D, E, F, G, H
 }
 
+#[derive(PartialEq, Debug)]
 pub struct File {
     pub value: FileVal
 }
@@ -41,7 +41,7 @@ impl File {
         new_value.map(|f| File { value: f })
     }
 
-    pub fn neighbour(&self, dir: Direction) -> Option<File> {
+    pub fn neighbour(&self, dir: super::Direction) -> Option<File> {
 
         match dir {
             Direction::NE | Direction::E | Direction::SE => self.east_neighbour(),
@@ -57,6 +57,7 @@ impl File {
 mod tests {
 
     use super::*;
+    use super::super::Direction;
 
     #[test]
     fn file_should_get_correct_neigbour() {

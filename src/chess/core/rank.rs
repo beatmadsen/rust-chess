@@ -1,12 +1,12 @@
-pub use super::Direction;
+use super::Direction;
 use self::RankVal::*;
 
-#[derive(PartialEq)]
-#[derive(Debug)]
+#[derive(PartialEq, Debug)]
 pub enum RankVal {
     One, Two, Three, Four, Five, Six, Seven, Eight
 }
 
+#[derive(PartialEq, Debug)]
 pub struct Rank {
     pub value: RankVal
 }
@@ -41,7 +41,7 @@ impl Rank {
         new_value.map(|r| Rank { value: r } )
     }
 
-    pub fn neighbour(&self, dir: Direction) -> Option<Rank> {
+    pub fn neighbour(&self, dir: super::Direction) -> Option<Rank> {
 
         match dir {
             Direction::N | Direction::NE | Direction::NW => self.north_neighbour(),
@@ -56,6 +56,7 @@ impl Rank {
 mod tests {
 
     use super::*;
+    use super::super::Direction;
 
     #[test]
     fn rank_should_get_correct_neigbour() {
