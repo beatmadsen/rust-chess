@@ -1,4 +1,5 @@
 use super::Direction;
+use super::HasNeighbour;
 use self::FileVal::*;
 
 #[derive(PartialEq, Debug)]
@@ -40,8 +41,11 @@ impl File {
         };
         new_value.map(|f| File { value: f })
     }
+}
 
-    pub fn neighbour(&self, dir: super::Direction) -> Option<File> {
+impl HasNeighbour<File> for File {
+
+    fn neighbour(&self, dir: super::Direction) -> Option<File> {
 
         match dir {
             Direction::NE | Direction::E | Direction::SE => self.east_neighbour(),
@@ -58,6 +62,7 @@ mod tests {
 
     use super::*;
     use super::super::Direction;
+    use super::super::HasNeighbour;
 
     #[test]
     fn file_should_get_correct_neigbour() {

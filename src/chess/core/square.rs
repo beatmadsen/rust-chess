@@ -1,6 +1,6 @@
 use super::file::File;
 use super::rank::Rank;
-
+use super::HasNeighbour;
 
 #[derive(PartialEq, Debug)]
 pub struct Square {
@@ -30,6 +30,7 @@ mod tests {
     use super::super::file::{File, FileVal};
     use super::super::rank::{Rank, RankVal};
     use super::super::Direction;
+    use super::super::HasNeighbour;
 
     #[test]
     fn square_should_get_correct_neigbour() {
