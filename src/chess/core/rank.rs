@@ -1,4 +1,5 @@
 use super::Direction;
+use super::HasNeighbour;
 use self::RankVal::*;
 
 #[derive(PartialEq, Debug)]
@@ -41,7 +42,13 @@ impl Rank {
         new_value.map(|r| Rank { value: r } )
     }
 
-    pub fn neighbour(&self, dir: super::Direction) -> Option<Rank> {
+
+}
+
+
+impl HasNeighbour<Rank> for Rank {
+
+    fn neighbour(&self, dir: super::Direction) -> Option<Rank> {
 
         match dir {
             Direction::N | Direction::NE | Direction::NW => self.north_neighbour(),
@@ -57,6 +64,7 @@ mod tests {
 
     use super::*;
     use super::super::Direction;
+    use super::super::HasNeighbour;
 
     #[test]
     fn rank_should_get_correct_neigbour() {

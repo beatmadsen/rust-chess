@@ -2,8 +2,6 @@ pub mod file;
 pub mod rank;
 pub mod square;
 
-use std::marker::Sized;
-
 pub fn dance(a: i32, b: i32) -> i32 {
     a + b
 }

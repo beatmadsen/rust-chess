@@ -8,9 +8,9 @@ pub struct Square {
     pub rank: Rank
 }
 
-impl Square {
+impl HasNeighbour<Square> for Square {
 
-    pub fn neighbour(&self, dir: super::Direction) -> Option<Square> {
+    fn neighbour(&self, dir: super::Direction) -> Option<Square> {
 
         let file_neighbour = || self.file.neighbour(dir);
         let rank_neighbour = |file| {
